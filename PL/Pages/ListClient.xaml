@@ -1,0 +1,40 @@
+﻿<local:PageBase
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:PL.Pages"
+      xmlns:Controls="clr-namespace:PL.Controls" x:Class="PL.Pages.ListClient"
+      mc:Ignorable="d" 
+      d:DesignHeight="600" d:DesignWidth="800"
+      Title="ListClient">
+    <StackPanel>
+        <Grid Height="80">
+            <Label x:Name="filtering" Content="אפשרות סינון" HorizontalAlignment="Left" Margin="657,20,0,0" VerticalAlignment="Top" Height="46" Width="133" FontSize="20"/>
+            <ComboBox x:Name="Stutus" HorizontalAlignment="Left" Margin="479,20,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.5,0.5" Height="37" Background="White" SelectionChanged="Stutus_SelectionChanged">
+                
+            </ComboBox>
+
+            <Label x:Name="filtering_Copy1" Content="סינון פנימי" HorizontalAlignment="Left" Margin="346,20,0,0" VerticalAlignment="Top" Height="46" Width="133" FontSize="20"/>
+            <ComboBox x:Name="Stutus_Copy1" HorizontalAlignment="Left" Margin="170,20,0,0" VerticalAlignment="Top" Width="156" RenderTransformOrigin="0.5,0.5" Height="37" Background="White"/>
+            <Button Content="חפש" HorizontalAlignment="Left" Height="46" Margin="37,20,0,0" VerticalAlignment="Top" Width="87" Click="Button_Click"/>
+        </Grid>
+        <Grid x:Name="showes" Height="520">
+            <ListView Name="ShowsList" HorizontalAlignment="Left" Height="454" Margin="26,27,0,0" VerticalAlignment="Top" Width="739">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="תעודת זהות" DisplayMemberBinding="{Binding GuestRequestKey}" Width="100"/>
+                         <GridViewColumn Header="שם" DisplayMemberBinding="{Binding PrivateName}" Width="80"/>
+                        <GridViewColumn Header="משפחה" DisplayMemberBinding="{Binding lastName}" Width="80"/>
+                        <GridViewColumn Header="מייל" DisplayMemberBinding="{Binding MailAddress}" Width="100"/>
+                        <GridViewColumn Header="תאריך הזמנה" DisplayMemberBinding="{Binding RegistrationDate}" Width="120 "/>
+                         <GridViewColumn Header="סטטוס" DisplayMemberBinding="{Binding Status}" Width="80"/>
+                         <GridViewColumn Header="אזור" DisplayMemberBinding="{Binding EnteryDate}" Width="100"/>
+                        <GridViewColumn Header="מספר ימים" DisplayMemberBinding="{Binding Area}" Width="100"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+    </StackPanel>
+</local:PageBase>

@@ -1,0 +1,54 @@
+﻿<ctrl:UserControlBase x:Class="PL.Controls.HostingUnitList" FlowDirection="RightToLeft"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             mc:Ignorable="d" 
+                           xmlns:ctrl="clr-namespace:PL.Controls"
+             xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+             TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+       
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+                       FontSize="16"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+             d:DesignHeight="500" d:DesignWidth="700">
+
+    <ScrollViewer >
+        <Grid x:Name="HostingListGrid">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition />
+            </Grid.RowDefinitions>
+            <ListView x:Name="UnitHostListView" HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <ItemsControl.ItemsPanel>
+                    <ItemsPanelTemplate>
+                        <UniformGrid Columns="3" HorizontalAlignment="Stretch" VerticalAlignment="Top"/>
+                    </ItemsPanelTemplate>
+                </ItemsControl.ItemsPanel>
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <StackPanel Orientation="Vertical" VerticalAlignment="Stretch" HorizontalAlignment="Stretch">
+                            <Image  Height="180" Source="{Binding Images[0].Url}" HorizontalAlignment="Stretch" VerticalAlignment="Top" Stretch="UniformToFill" />
+                            <TextBlock FontSize="18" TextAlignment="Center"  HorizontalAlignment="Stretch" VerticalAlignment="Bottom" >
+ <Run Text="{Binding HostingUnitName}" /> <Run Text="{Binding stSerialKey}" FontSize="10" />
+                            </TextBlock>
+                            <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+                                <Button Tag="{Binding stSerialKey}" Margin="2"   HorizontalAlignment="Left"   
+                                        Width="115"
+                                        Content="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:HostingUnitList}}, Path=getButtonText}" Click="EditHostingUnit_Click"   />
+                                <Button Tag="{Binding stSerialKey}"  Margin="2"  HorizontalAlignment="Stretch" Content="מחיקה" Width="115"
+                                        Visibility="{Binding RelativeSource={RelativeSource FindAncestor, AncestorType={x:Type ctrl:HostingUnitList}}, Path=DeleteVisible}" Click="DeleteHostingUnit_Click"   />
+
+                            </StackPanel>
+                           
+                        </StackPanel>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </Grid>
+
+    </ScrollViewer>
+
+
+</ctrl:UserControlBase>

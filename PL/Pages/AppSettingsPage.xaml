@@ -1,0 +1,79 @@
+﻿<page:PageBase  x:Class="PL.Pages.AppSettingsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+                FlowDirection="RightToLeft"
+       xmlns:page="clr-namespace:PL.Pages"
+                 TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+       
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+    
+        FontSize="16"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="AppSettingsPage">
+
+    <StackPanel>
+        <Grid Height="80" >
+            <Label Content="הגדרות מערכת" FontSize="35" HorizontalAlignment="Left" Height="48"  VerticalAlignment="Top" Width="455" />
+            <StackPanel Width="120"  HorizontalAlignment="Right" Orientation="Horizontal">
+                <Button  Width="120" HorizontalAlignment="Right"  Content="שמירת שינויים" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="UpdateButton_Click"/>
+            </StackPanel>
+
+
+
+        </Grid>
+        <Grid Name="EditSettingsGrid" Height="520">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="200" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+
+                <RowDefinition Height="1" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="300" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="45" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+
+
+
+          
+            <Label Content="*מייל לטופס יצירת קשר" Grid.Column="0"   VerticalAlignment="Stretch"  VerticalContentAlignment="Center" Grid.Row="1" />
+            <Label Content="*נושא מייל הזמנה" Grid.Column="0"   VerticalAlignment="Stretch"  VerticalContentAlignment="Center" Grid.Row="2" />
+
+            <Label Content="*תוכן מייל הזמנה" Grid.Column="0"   VerticalAlignment="Stretch"  VerticalContentAlignment="Center" Grid.Row="3" />
+
+            <Label Content="*תשלום ליום " Grid.Column="0"   VerticalAlignment="Stretch"  VerticalContentAlignment="Center" Grid.Row="5" />
+
+            <TextBox Grid.Column="1"  MaxLength="20" HorizontalAlignment="Stretch"  Text="{Binding Path=ContactMail}"   VerticalContentAlignment="Center" Grid.Row="1"/>
+            <TextBox Grid.Column="1"  MaxLength="50" HorizontalAlignment="Stretch"  Text="{Binding Path=OrderMailSubject}"   VerticalContentAlignment="Center" Grid.Row="2"/>
+            <TextBox   Grid.Column="1"  HorizontalAlignment="Stretch"  VerticalContentAlignment="Top"  Height="300" Text="{Binding Path=OrderMailText}"  TextWrapping="Wrap"  AcceptsReturn="True"     Grid.Row="3"  />
+            <TextBox Grid.Column="1"  MaxLength="20" HorizontalAlignment="Stretch"  Text="{Binding Path=PayForDay}"   VerticalContentAlignment="Center" Grid.Row="5"/>
+
+            <!--<RichTextBox   AcceptsReturn="True"   Grid.Column="1"  HorizontalAlignment="Left"  VerticalContentAlignment="Top"      Grid.Row="3" >
+                <FlowDocument PageHeight="180" >
+                    <Paragraph>
+                        <Run Text="{Binding OrderMailText, Mode=TwoWay}"/>
+                    </Paragraph>
+                </FlowDocument>
+            </RichTextBox>-->
+
+
+            <Label Content="ניתן להשתמש בנתונים : {NAME} {REQUESTID} {HOSTINGNAME} {IMAGE} {OWNERNAME} {OWNERMAIL}" Grid.Column="0" Grid.ColumnSpan="2"   VerticalAlignment="Stretch"  VerticalContentAlignment="Center" Grid.Row="4" />
+            <Label  Grid.Column="1" Foreground="Red" Content="שדות חובה מסומנים ב-*" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="274" Grid.Row="6" />
+
+
+
+
+        </Grid>
+    </StackPanel>
+</page:PageBase>

@@ -1,0 +1,43 @@
+﻿<page:PageBase x:Class="PL.Pages.Main" FlowDirection="RightToLeft" 
+       xmlns:page="clr-namespace:PL.Pages"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+                xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+              
+     TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+     TextElement.FontWeight="Regular"
+     TextElement.FontSize="13"
+     TextOptions.TextFormattingMode="Ideal"
+     TextOptions.TextRenderingMode="Auto"
+     Background="Transparent"
+     FontFamily="{DynamicResource MaterialDesignFont}"
+                
+      mc:Ignorable="d" 
+        FontSize="16"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="Main">
+
+    <Grid  >
+        <Grid.RowDefinitions>
+            <RowDefinition Height="1" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="800" />
+        </Grid.ColumnDefinitions>
+     
+            <StackPanel Grid.Row="1" >
+            <TextBlock FontSize="30"  >GR עושים נופש לנופש</TextBlock>
+                <Button Content="צור קשר" x:Name="ContactUs"  Height="48"  HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="165" Click="ContactUs_Click"  Margin="100,450,400,0"/>
+            <Button  Content="הוסף בקשה" x:Name="AddReqest" Height="48" HorizontalAlignment="Right" VerticalAlignment="Bottom"  Width="192" Click="AddReqest_Click" Margin="0,-50,600,0"/>
+            <Image  Source="/Resource/GrLogo.png" Opacity="0.1"  Margin="275,-400,16,107" />
+
+        </StackPanel>
+       
+
+        <Button Visibility="Hidden" Grid.Row="1" Content="מקובץ לפי אזור" Name="RequestByArea" HorizontalAlignment="Left" Height="37" Margin="348,47,0,0" VerticalAlignment="Top" Width="175" Click="RequestByArea_Click"/>
+
+    </Grid>
+</page:PageBase>

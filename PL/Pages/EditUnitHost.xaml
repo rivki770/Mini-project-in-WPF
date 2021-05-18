@@ -1,0 +1,165 @@
+﻿<page:PageBase x:Class="PL.Pages.EditUnitHost" FlowDirection="RightToLeft"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      mc:Ignorable="d" 
+      xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+         TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+      
+        TextElement.FontWeight="Medium"
+        TextElement.FontSize="14"
+        FontFamily="{materialDesign:MaterialDesignFont}"
+      xmlns:page="clr-namespace:PL.Pages"
+        FontSize="16"
+      d:DesignHeight="600" d:DesignWidth="800"
+	Title="EditUnitHost">
+
+    <StackPanel>
+        <Grid Height="60">
+            <StackPanel Orientation="Horizontal" Width="450" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="10 0">
+                <Button Uid="0" Width="150" HorizontalAlignment="Left" Content="כללי" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="ShowPanel_Click"/>
+                <Button Name="ShowCalendar" Uid="1" Width="150" HorizontalAlignment="Left" Content="יומן" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="ShowPanel_Click"/>
+                <Button Name="UnitHostButton" Uid="2" Width="150" HorizontalAlignment="Left" Content="תמונות" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="ShowPanel_Click"/>
+
+            </StackPanel>
+            <StackPanel Width="240"  HorizontalAlignment="Right" Orientation="Horizontal">
+               
+                <Button Name="SaveChangeButton"  Width="120" HorizontalAlignment="Right"  Content="שמירת שינויים" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="UpdateButton_Click"/>
+                <Button  Uid="2" Width="120" HorizontalAlignment="Right" Content="חזרה לרשימה" Height="50" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="#FF2196F3" Click="BackToList_Click"/>
+
+            </StackPanel>
+            <Grid x:Name="GridCursor" VerticalAlignment="Bottom" Width="150" Height="5" Background="#FF2196F3" HorizontalAlignment="Left" Margin="10 0"/>
+        </Grid>
+        <Grid x:Name="GridMain" Height="540">
+            <Grid Name="hostEditGrid" Visibility="Visible">
+
+                <Grid.ColumnDefinitions>
+
+                    <ColumnDefinition Width="10" />
+                    <ColumnDefinition Width="*" >
+
+                    </ColumnDefinition>
+
+
+                </Grid.ColumnDefinitions>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="1" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+
+
+                <TextBox Grid.Column="1" materialDesign:HintAssist.Hint="*שם יחידת האירוח"
+         materialDesign:HintAssist.IsFloating="True"  MaxLength="30" Name="HostingUnitName" HorizontalAlignment="Left"    Text="{Binding Path=HostingUnitName}" VerticalAlignment="Top" Width="400" Grid.Row="2"   />
+
+                <ComboBox SelectedValuePath="Tag" materialDesign:HintAssist.Hint="*סוג" materialDesign:HintAssist.IsFloating="True"  Grid.Column="1" Name="typeCb" HorizontalAlignment="Left"   VerticalAlignment="Top" SelectedValue="{Binding Path=TypeId}" Width="126"  Grid.Row="2" Margin="419,0,0,0">
+                    <ComboBoxItem Content="הכל" Tag="0" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="צימר" Tag="1" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="מלון" Tag="2" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="קמפינג" Tag="3" HorizontalAlignment="Left" Width="124"/>
+                </ComboBox>
+                <ComboBox SelectedValuePath="Tag"  materialDesign:HintAssist.Hint="*אזור" materialDesign:HintAssist.IsFloating="True" Grid.Column="1" Name="areaCb" HorizontalAlignment="Left"   VerticalAlignment="Top" SelectedValue="{Binding Path=AreaId}" Width="126"  Grid.Row="3">
+                    <ComboBoxItem Content="הכל" Tag="0" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="צפון" Tag="1" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="דרום" Tag="2" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="מרכז" Tag="3" HorizontalAlignment="Left" Width="124"/>
+                    <ComboBoxItem Content="ירושלים" Tag="4" HorizontalAlignment="Left" Width="124"/>
+                </ComboBox>
+                <TextBox Grid.Column="1"  MaxLength="15" HorizontalAlignment="Left" materialDesign:HintAssist.Hint="*עיר"
+         materialDesign:HintAssist.IsFloating="True" Text="{Binding Path=SubArea}" VerticalAlignment="Top" Width="186"  Grid.Row="3" Margin="214,0,0,0"/>
+
+                <StackPanel Orientation="Horizontal"  VerticalAlignment="Center"   Grid.Column="1" Grid.Row="4">
+                    <ComboBox Width="120" Margin="5,0" SelectedValuePath="Tag"   materialDesign:HintAssist.Hint="מבוגרים"
+         materialDesign:HintAssist.IsFloating="True"  HorizontalAlignment="Left"   VerticalAlignment="Top" SelectedValue="{Binding Path=Adult}">
+
+                        <ComboBoxItem Content="1" Tag="1"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="2" Tag="2"  HorizontalAlignment="Left"/>
+                        <ComboBoxItem Content="3" Tag="3"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="4" Tag="4"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="5" Tag="5"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="6" Tag="6"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="7" Tag="7"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="8" Tag="8"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="9" Tag="9"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="10" Tag="10"  HorizontalAlignment="Left" />
+                    </ComboBox>
+                    <ComboBox SelectedValuePath="Tag" Width="120" Margin="5,0"   materialDesign:HintAssist.Hint="ילדים"
+         materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left"  SelectedValue="{Binding Path=Children}" >
+
+                        <ComboBoxItem Content="1" Tag="1"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="2" Tag="2"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="3" Tag="3"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="4" Tag="4"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="5" Tag="5"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="6" Tag="6"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="7" Tag="7"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="8" Tag="8"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="9" Tag="9"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="10" Tag="10"  HorizontalAlignment="Left" />
+                    </ComboBox>
+                    <ComboBox SelectedValuePath="Tag"  materialDesign:HintAssist.Hint="חדרים" Width="120" Margin="5,0"
+         materialDesign:HintAssist.IsFloating="True"  HorizontalAlignment="Left"   VerticalAlignment="Top" SelectedValue="{Binding Path=Rooms}"  >
+                        <ComboBoxItem Content="1" Tag="1"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="2" Tag="2"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="3" Tag="3"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="4" Tag="4"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="5" Tag="5"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="6" Tag="6"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="7" Tag="7"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="8" Tag="8"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="9" Tag="9"  HorizontalAlignment="Left" />
+                        <ComboBoxItem Content="10" Tag="10"  HorizontalAlignment="Left" />
+                    </ComboBox>
+
+                </StackPanel>
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center"   Grid.Column="1" Grid.Row="5">
+                    <Label   Content="בריכה" />
+                    <ToggleButton Margin="0,0,15,0" IsChecked="{Binding Path=Pool}"  Style="{StaticResource MaterialDesignSwitchToggleButton}"  ToolTip="בריכה">
+
+                    </ToggleButton>
+                    <Label   Content="ג'קוזי" />
+                    <ToggleButton Margin="0,0,15,0" IsChecked="{Binding Path=Jacuzzi}"  Style="{StaticResource MaterialDesignSwitchToggleButton}"  ToolTip="בריכה">
+
+                    </ToggleButton>
+                    <Label   Content="גינה" />
+                    <ToggleButton Margin="0,0,15,0" IsChecked="{Binding Path=Garden}"  Style="{StaticResource MaterialDesignSwitchToggleButton}"  ToolTip="בריכה">
+
+                    </ToggleButton>
+                    <Label   Content="פעילות לילדים" />
+                    <ToggleButton IsChecked="{Binding Path=ChildrensAttractions}"  Style="{StaticResource MaterialDesignSwitchToggleButton}"  ToolTip="בריכה">
+
+                    </ToggleButton>
+                </StackPanel>
+
+
+
+
+                <Label  Grid.Column="1" Content="{Binding Path=Id}" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="274" Grid.Row="1" Margin="10,10,0,0"/>
+
+                <Label  Grid.Column="1" Foreground="Red" Content="שדות חובה מסומנים ב-*" HorizontalAlignment="Left" Height="33"  VerticalAlignment="Top" Width="274" Grid.Row="8" Margin="10,10,0,0"/>
+
+
+
+
+
+
+            </Grid>
+            <Grid Name="calendarGrid"  Visibility="Hidden" >
+              
+            </Grid>
+
+            <Grid Name="GalleryGrid"  Visibility="Hidden" >
+
+            </Grid>
+        </Grid>
+    </StackPanel>
+</page:PageBase>
